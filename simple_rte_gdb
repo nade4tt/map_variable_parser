@@ -1,0 +1,19 @@
+#!/bin/sh
+python_file="main.py"
+
+# Check if user provided 2 arguments
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <map_file> <variable_name>"
+    exit 1
+else
+  result=$(python "$python_file" $1 $2 2>&1)
+  if [[ $? -ne 0 ]]; then
+      echo "Exception: $result"
+      exit 1
+  else
+    echo "Result: $result"
+    # command goes here
+    exit 0
+  fi
+fi
+
